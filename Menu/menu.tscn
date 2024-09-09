@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl6jdaiehflei"]
+
+[ext_resource type="Texture2D" uid="uid://b1xwpjg11so2i" path="res://Assets/wall-horizontal.png" id="1_if45u"]
+[ext_resource type="Script" path="res://Menu/control.gd" id="2_110p8"]
+[ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="2_yewj5"]
+[ext_resource type="Texture2D" uid="uid://dalac2i36xxqx" path="res://Assets/wall-vertical.png" id="3_83pk0"]
+
+[sub_resource type="Theme" id="Theme_lt0iw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yt7vh"]
+font = ExtResource("2_yewj5")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_5aov5"]
+font = ExtResource("2_yewj5")
+font_size = 120
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4fot"]
+font = ExtResource("2_yewj5")
+font_size = 50
+
+[node name="Menu" type="Node2D"]
+
+[node name="TopWall" type="Sprite2D" parent="."]
+position = Vector2(640, 40)
+texture = ExtResource("1_if45u")
+
+[node name="BottomWall" type="Sprite2D" parent="."]
+position = Vector2(640, 680)
+texture = ExtResource("1_if45u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1253.0
+offset_bottom = 720.0
+script = ExtResource("2_110p8")
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 468.0
+offset_right = 779.0
+offset_bottom = 556.0
+theme = SubResource("Theme_lt0iw")
+
+[node name="Play" type="Label" parent="Control/PlayButton"]
+offset_left = 49.0
+offset_top = 9.0
+offset_right = 213.0
+offset_bottom = 83.0
+text = "PLAY"
+label_settings = SubResource("LabelSettings_yt7vh")
+
+[node name="LineEdit" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 316.0
+offset_right = 1136.0
+offset_bottom = 393.0
+theme_override_fonts/font = ExtResource("2_yewj5")
+theme_override_font_sizes/font_size = 50
+placeholder_text = "PLAYER"
+
+[node name="ExitButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1162.0
+offset_top = 60.0
+offset_right = 1199.0
+offset_bottom = 121.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.773856, 2.23808e-06, 9.62615e-07, 1)
+theme_override_fonts/font = ExtResource("2_yewj5")
+theme_override_font_sizes/font_size = 50
+text = "X"
+flat = true
+
+[node name="LeftWall" type="Sprite2D" parent="."]
+position = Vector2(56, 364)
+texture = ExtResource("3_83pk0")
+
+[node name="RightWall" type="Sprite2D" parent="."]
+position = Vector2(1224, 364)
+texture = ExtResource("3_83pk0")
+
+[node name="Pong" type="Label" parent="."]
+offset_left = 525.0
+offset_top = 111.0
+offset_right = 807.0
+offset_bottom = 237.0
+text = "PONG"
+label_settings = SubResource("LabelSettings_5aov5")
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = 280.0
+offset_top = 325.0
+offset_right = 619.0
+offset_bottom = 380.0
+text = "PLAYER NAME:"
+label_settings = SubResource("LabelSettings_b4fot")
+
+[connection signal="pressed" from="Control/ExitButton" to="Control" method="_on_exit_button_pressed"]

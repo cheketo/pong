@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://p7gixqpkoyag"]
+
+[ext_resource type="PackedScene" uid="uid://b2sgarhpbvbk7" path="res://Player/player.tscn" id="1_4aogd"]
+[ext_resource type="Script" path="res://Pong/pong.gd" id="1_hx4q5"]
+[ext_resource type="PackedScene" uid="uid://2d0gqjovj4ys" path="res://Computer/computer.tscn" id="2_h5rlr"]
+[ext_resource type="PackedScene" uid="uid://cpefh3dpdpe05" path="res://Ball/ball.tscn" id="3_5lkeh"]
+[ext_resource type="PackedScene" uid="uid://cjsnpaf2bouil" path="res://Field/field.tscn" id="4_tr2jt"]
+[ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="6_a43x6"]
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_hx4q5")
+
+[node name="Player" parent="." instance=ExtResource("1_4aogd")]
+
+[node name="Computer" parent="." instance=ExtResource("2_h5rlr")]
+
+[node name="Ball" parent="." instance=ExtResource("3_5lkeh")]
+
+[node name="Field" parent="." instance=ExtResource("4_tr2jt")]
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 1238.0
+offset_top = 8.0
+offset_right = 1275.0
+offset_bottom = 69.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.773856, 2.23808e-06, 9.62615e-07, 1)
+theme_override_fonts/font = ExtResource("6_a43x6")
+theme_override_font_sizes/font_size = 50
+text = "X"
+flat = true
+
+[connection signal="goal_left" from="Field" to="." method="_on_goal_left"]
+[connection signal="goal_right" from="Field" to="." method="_on_goal_right"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

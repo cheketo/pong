@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjsnpaf2bouil"]
+
+[ext_resource type="Script" path="res://Field/field.gd" id="1_5fv1f"]
+[ext_resource type="Texture2D" uid="uid://b1xwpjg11so2i" path="res://Assets/wall-horizontal.png" id="1_q685n"]
+[ext_resource type="Texture2D" uid="uid://dalac2i36xxqx" path="res://Assets/wall-vertical.png" id="2_3i5aw"]
+[ext_resource type="Texture2D" uid="uid://cmrkh2lljjber" path="res://Assets/middle-line.png" id="4_pk6d3"]
+[ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="5_hxtd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpg8t"]
+size = Vector2(1188, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru64t"]
+size = Vector2(20, 618)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqebu"]
+font = ExtResource("5_hxtd0")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_wk3ji"]
+font = ExtResource("5_hxtd0")
+font_size = 50
+
+[node name="Field" type="Node2D"]
+script = ExtResource("1_5fv1f")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(640, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopWall"]
+texture = ExtResource("1_q685n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_wpg8t")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(640, 680)
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomWall"]
+texture = ExtResource("1_q685n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_wpg8t")
+
+[node name="GoalLeft" type="Area2D" parent="."]
+position = Vector2(56, 361)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GoalLeft"]
+texture = ExtResource("2_3i5aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ru64t")
+
+[node name="GoalRight" type="Area2D" parent="."]
+position = Vector2(1224, 361)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GoalRight"]
+texture = ExtResource("2_3i5aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ru64t")
+
+[node name="Middle-line" type="Sprite2D" parent="."]
+position = Vector2(640, 358)
+texture = ExtResource("4_pk6d3")
+
+[node name="LeftScore" type="Label" parent="."]
+offset_left = 502.0
+offset_top = 70.0
+offset_right = 598.0
+offset_bottom = 144.0
+text = "0"
+label_settings = SubResource("LabelSettings_bqebu")
+horizontal_alignment = 2
+
+[node name="Computer" type="Label" parent="."]
+offset_left = 908.0
+offset_top = 77.0
+offset_right = 1149.0
+offset_bottom = 130.0
+text = "COMPUTER"
+label_settings = SubResource("LabelSettings_wk3ji")
+horizontal_alignment = 2
+
+[node name="Player" type="Label" parent="."]
+offset_left = 131.0
+offset_top = 77.0
+offset_right = 310.0
+offset_bottom = 130.0
+text = "PLAYER"
+label_settings = SubResource("LabelSettings_wk3ji")
+horizontal_alignment = 2
+
+[node name="RightScore" type="Label" parent="."]
+offset_left = 682.0
+offset_top = 70.0
+offset_right = 772.0
+offset_bottom = 144.0
+text = "0"
+label_settings = SubResource("LabelSettings_bqebu")
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
