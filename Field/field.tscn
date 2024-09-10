@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjsnpaf2bouil"]
+[gd_scene load_steps=11 format=3 uid="uid://cjsnpaf2bouil"]
 
 [ext_resource type="Script" path="res://Field/field.gd" id="1_5fv1f"]
 [ext_resource type="Texture2D" uid="uid://b1xwpjg11so2i" path="res://Assets/wall-horizontal.png" id="1_q685n"]
@@ -16,9 +16,15 @@ size = Vector2(20, 618)
 font = ExtResource("5_hxtd0")
 font_size = 70
 
+[sub_resource type="LabelSettings" id="LabelSettings_yvr0u"]
+font = ExtResource("5_hxtd0")
+font_size = 50
+font_color = Color(0.608986, 1.63645e-06, 4.33177e-07, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_wk3ji"]
 font = ExtResource("5_hxtd0")
 font_size = 50
+font_color = Color(0.341176, 0.745098, 1, 1)
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_5fv1f")
@@ -82,7 +88,7 @@ offset_top = 77.0
 offset_right = 1149.0
 offset_bottom = 130.0
 text = "COMPUTER"
-label_settings = SubResource("LabelSettings_wk3ji")
+label_settings = SubResource("LabelSettings_yvr0u")
 horizontal_alignment = 2
 
 [node name="Player" type="Label" parent="."]

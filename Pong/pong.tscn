@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://p7gixqpkoyag"]
+[gd_scene load_steps=9 format=3 uid="uid://p7gixqpkoyag"]
 
 [ext_resource type="PackedScene" uid="uid://b2sgarhpbvbk7" path="res://Player/player.tscn" id="1_4aogd"]
 [ext_resource type="Script" path="res://Pong/pong.gd" id="1_hx4q5"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cpefh3dpdpe05" path="res://Ball/ball.tscn" id="3_5lkeh"]
 [ext_resource type="PackedScene" uid="uid://cjsnpaf2bouil" path="res://Field/field.tscn" id="4_tr2jt"]
 [ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="6_a43x6"]
+[ext_resource type="Script" path="res://Pong/press_space_bar_label.gd" id="7_ic24s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6in0"]
+font = ExtResource("6_a43x6")
+font_size = 40
 
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_hx4q5")
@@ -30,6 +35,16 @@ theme_override_font_sizes/font_size = 50
 text = "X"
 flat = true
 
+[node name="PressSpaceBarLabel" type="Label" parent="."]
+offset_left = 372.0
+offset_top = 595.0
+offset_right = 936.0
+offset_bottom = 638.0
+text = "PRESS SPACE BAR TO START"
+label_settings = SubResource("LabelSettings_g6in0")
+script = ExtResource("7_ic24s")
+
+[connection signal="ball_is_moving" from="Ball" to="." method="_on_ball_ball_is_moving"]
 [connection signal="goal_left" from="Field" to="." method="_on_goal_left"]
 [connection signal="goal_right" from="Field" to="." method="_on_goal_right"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

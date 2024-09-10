@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var speed = 475
 var ball
 const INITAL_POSITION = Vector2(1180,360)
 
@@ -15,5 +14,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 1
 	
-	velocity *= speed
+	velocity *= Global.computer_speed
 	move_and_collide(velocity * delta)
