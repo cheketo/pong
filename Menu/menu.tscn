@@ -34,10 +34,10 @@ script = ExtResource("2_110p8")
 
 [node name="LineEdit" type="LineEdit" parent="Control"]
 layout_mode = 0
-offset_left = 635.0
-offset_top = 316.0
-offset_right = 1136.0
-offset_bottom = 393.0
+offset_left = 544.0
+offset_top = 320.0
+offset_right = 1088.0
+offset_bottom = 397.0
 theme_override_colors/font_color = Color(0.339348, 0.743786, 1, 1)
 theme_override_fonts/font = ExtResource("2_yewj5")
 theme_override_font_sizes/font_size = 50
@@ -99,18 +99,18 @@ position = Vector2(1224, 364)
 texture = ExtResource("3_83pk0")
 
 [node name="Pong" type="Label" parent="."]
-offset_left = 525.0
-offset_top = 111.0
-offset_right = 807.0
-offset_bottom = 237.0
+offset_left = 496.0
+offset_top = 112.0
+offset_right = 778.0
+offset_bottom = 238.0
 text = "PONG"
 label_settings = SubResource("LabelSettings_5aov5")
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 280.0
-offset_top = 325.0
-offset_right = 619.0
-offset_bottom = 380.0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 531.0
+offset_bottom = 383.0
 text = "PLAYER NAME:"
 label_settings = SubResource("LabelSettings_b4fot")
 
