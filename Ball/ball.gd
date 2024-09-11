@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		if collision_info:
 			velocity = velocity.bounce(collision_info.get_normal())
 			var body = collision_info.get_collider()
-			var audio_player = body.get_node("AudioStreamPlayer2D")
-			if audio_player:
-				audio_player.play()
+			if body is CharacterBody2D:
+				var audio_player = body.get_node("AudioStreamPlayer2D")
+				if audio_player:
+					audio_player.play()

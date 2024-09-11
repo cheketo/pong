@@ -9,11 +9,11 @@ func _ready() -> void:
 	$Field.get_node("Player").text = Global.player_name.to_upper()
 	$PressSpaceBarLabel.start_blink()
 
-func _on_goal_left(body: Node2D) -> void:
+func _on_goal_left(_body: Node2D) -> void:
 	computerScore += 1
 	reset_positions()
 
-func _on_goal_right(body: Node2D) -> void:
+func _on_goal_right(_body: Node2D) -> void:
 	playerScore += 1
 	reset_positions()
 
