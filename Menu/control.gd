@@ -6,25 +6,19 @@ func _ready():
 	$HardButton.connect("pressed", _on_hard_button_pressed)
 
 func _on_easy_button_pressed():
-	Global.computer_speed = 485
+	Global.computer_speed = 470
 	Global.ball_speed = 500
-	set_player_name_and_start()
+	get_parent().set_player_name_and_start()
 	
 func _on_normal_button_pressed():
-	Global.computer_speed = 500
+	Global.computer_speed = 490
 	Global.ball_speed = 510
-	set_player_name_and_start()
+	get_parent().set_player_name_and_start()
 	
 func _on_hard_button_pressed():
-	Global.computer_speed = 525
-	Global.ball_speed = 530
-	set_player_name_and_start()
-
-func set_player_name_and_start():
-	Global.player_name = $LineEdit.text.to_upper()
-	if Global.player_name.strip_edges() == "":
-		Global.player_name = "Player"
-	get_tree().change_scene_to_file("res://Pong/pong.tscn")
+	Global.computer_speed = 535
+	Global.ball_speed = 550
+	get_parent().set_player_name_and_start()
 	
 func _on_exit_button_pressed() -> void:
-	Global._on_exit_button_pressed()
+	get_parent().exit()

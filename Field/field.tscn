@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjsnpaf2bouil"]
+[gd_scene load_steps=12 format=3 uid="uid://cjsnpaf2bouil"]
 
 [ext_resource type="Script" path="res://Field/field.gd" id="1_5fv1f"]
 [ext_resource type="Texture2D" uid="uid://b1xwpjg11so2i" path="res://Assets/wall-horizontal.png" id="1_q685n"]
 [ext_resource type="Texture2D" uid="uid://dalac2i36xxqx" path="res://Assets/wall-vertical.png" id="2_3i5aw"]
 [ext_resource type="Texture2D" uid="uid://cmrkh2lljjber" path="res://Assets/middle-line.png" id="4_pk6d3"]
+[ext_resource type="AudioStream" uid="uid://em1j8qmcyxur" path="res://Assets/kenney_ui_audio/click2.wav" id="4_tjiih"]
 [ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="5_hxtd0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpg8t"]
@@ -58,6 +59,9 @@ texture = ExtResource("2_3i5aw")
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ru64t")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GoalLeft"]
+stream = ExtResource("4_tjiih")
+
 [node name="GoalRight" type="Area2D" parent="."]
 position = Vector2(1224, 361)
 metadata/_edit_group_ = true
@@ -70,7 +74,8 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ru64t")
 
 [node name="Middle-line" type="Sprite2D" parent="."]
-position = Vector2(640, 358)
+texture_filter = 1
+position = Vector2(640, 354)
 texture = ExtResource("4_pk6d3")
 
 [node name="LeftScore" type="Label" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://p7gixqpkoyag"]
+[gd_scene load_steps=10 format=3 uid="uid://p7gixqpkoyag"]
 
 [ext_resource type="PackedScene" uid="uid://b2sgarhpbvbk7" path="res://Player/player.tscn" id="1_4aogd"]
 [ext_resource type="Script" path="res://Pong/pong.gd" id="1_hx4q5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjsnpaf2bouil" path="res://Field/field.tscn" id="4_tr2jt"]
 [ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="6_a43x6"]
 [ext_resource type="Script" path="res://Pong/press_space_bar_label.gd" id="7_ic24s"]
+[ext_resource type="PackedScene" uid="uid://sqxdg0ds5kjm" path="res://ui_sounds.tscn" id="8_mxfa1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6in0"]
 font = ExtResource("6_a43x6")
@@ -28,6 +29,7 @@ offset_left = 1238.0
 offset_top = 8.0
 offset_right = 1275.0
 offset_bottom = 69.0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(0.773856, 2.23808e-06, 9.62615e-07, 1)
 theme_override_fonts/font = ExtResource("6_a43x6")
@@ -43,6 +45,9 @@ offset_bottom = 638.0
 text = "PRESS SPACE BAR TO START"
 label_settings = SubResource("LabelSettings_g6in0")
 script = ExtResource("7_ic24s")
+
+[node name="UiSounds" parent="." instance=ExtResource("8_mxfa1")]
+root_path = NodePath("..")
 
 [connection signal="goal_left" from="Field" to="." method="_on_goal_left"]
 [connection signal="goal_right" from="Field" to="." method="_on_goal_right"]

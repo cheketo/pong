@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl6jdaiehflei"]
+[gd_scene load_steps=14 format=3 uid="uid://bl6jdaiehflei"]
 
 [ext_resource type="Texture2D" uid="uid://b1xwpjg11so2i" path="res://Assets/wall-horizontal.png" id="1_if45u"]
+[ext_resource type="Script" path="res://Menu/menu.gd" id="1_nu2l7"]
 [ext_resource type="Script" path="res://Menu/control.gd" id="2_110p8"]
 [ext_resource type="FontFile" uid="uid://bfbhtaa4v74o" path="res://Assets/alarm clock.ttf" id="2_yewj5"]
 [ext_resource type="Texture2D" uid="uid://dalac2i36xxqx" path="res://Assets/wall-vertical.png" id="3_83pk0"]
+[ext_resource type="AudioStream" uid="uid://cjlqq6pkq33yq" path="res://Assets/80s-loop.wav" id="5_bl5pq"]
+[ext_resource type="PackedScene" uid="uid://sqxdg0ds5kjm" path="res://ui_sounds.tscn" id="7_jnlj4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5aov5"]
 font = ExtResource("2_yewj5")
@@ -15,7 +18,62 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("2_yewj5")
 font_size = 50
 
+[sub_resource type="Animation" id="Animation_ymnne"]
+resource_name = "fade_in"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-40.0, -2.0]
+}
+
+[sub_resource type="Animation" id="Animation_bexf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+
+[sub_resource type="Animation" id="Animation_06b87"]
+resource_name = "fade_out"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.0, -40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uorej"]
+_data = {
+"RESET": SubResource("Animation_bexf1"),
+"fade_in": SubResource("Animation_ymnne"),
+"fade_out": SubResource("Animation_06b87")
+}
+
 [node name="Menu" type="Node2D"]
+script = ExtResource("1_nu2l7")
 
 [node name="TopWall" type="Sprite2D" parent="."]
 position = Vector2(640, 40)
@@ -43,6 +101,39 @@ theme_override_fonts/font = ExtResource("2_yewj5")
 theme_override_font_sizes/font_size = 50
 placeholder_text = "PLAYER"
 
+[node name="EasyButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 448.0
+offset_right = 447.0
+offset_bottom = 530.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_yewj5")
+theme_override_font_sizes/font_size = 70
+text = " EASY "
+
+[node name="NormalButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 448.0
+offset_right = 809.0
+offset_bottom = 530.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_yewj5")
+theme_override_font_sizes/font_size = 70
+text = " NORMAL "
+
+[node name="HardButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 448.0
+offset_right = 1087.0
+offset_bottom = 530.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_yewj5")
+theme_override_font_sizes/font_size = 70
+text = " HARD "
+
 [node name="ExitButton" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 1072.0
@@ -56,39 +147,6 @@ theme_override_fonts/font = ExtResource("2_yewj5")
 theme_override_font_sizes/font_size = 50
 text = "EXIT"
 flat = true
-
-[node name="EasyButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 448.0
-offset_right = 447.0
-offset_bottom = 530.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_yewj5")
-theme_override_font_sizes/font_size = 70
-text = " EASY "
-
-[node name="HardButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 448.0
-offset_right = 1087.0
-offset_bottom = 530.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_yewj5")
-theme_override_font_sizes/font_size = 70
-text = " HARD "
-
-[node name="NormalButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 472.0
-offset_top = 448.0
-offset_right = 809.0
-offset_bottom = 530.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_yewj5")
-theme_override_font_sizes/font_size = 70
-text = " NORMAL "
 
 [node name="LeftWall" type="Sprite2D" parent="."]
 position = Vector2(56, 364)
@@ -113,5 +171,19 @@ offset_right = 531.0
 offset_bottom = 383.0
 text = "PLAYER NAME:"
 label_settings = SubResource("LabelSettings_b4fot")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bl5pq")
+volume_db = -1.0
+pitch_scale = 0.95
+max_polyphony = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uorej")
+}
+
+[node name="UiSounds" parent="." instance=ExtResource("7_jnlj4")]
+root_path = NodePath("../Control")
 
 [connection signal="pressed" from="Control/ExitButton" to="Control" method="_on_exit_button_pressed"]

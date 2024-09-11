@@ -26,7 +26,7 @@ func reset_positions() -> void:
 	$Ball.reset()
 
 func _on_exit_button_pressed() -> void:
-	#Global._on_exit_button_pressed()
+	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 func _on_ball_ball_is_moving(is_moving: Variant) -> void:

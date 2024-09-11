@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2sgarhpbvbk7"]
+[gd_scene load_steps=5 format=3 uid="uid://b2sgarhpbvbk7"]
 
 [ext_resource type="Texture2D" uid="uid://cmslkjfyqalhf" path="res://Assets/paddle-blue.png" id="1_bhilv"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yxjsr"]
+[ext_resource type="AudioStream" uid="uid://em1j8qmcyxur" path="res://Assets/kenney_ui_audio/click2.wav" id="3_dx7mw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cck1v"]
 radius = 12.0
@@ -16,4 +17,8 @@ rotation = 1.5708
 texture = ExtResource("1_bhilv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
 shape = SubResource("CapsuleShape2D_cck1v")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dx7mw")

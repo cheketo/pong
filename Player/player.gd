@@ -4,7 +4,7 @@ var speed = 500
 const INITAL_POSITION = Vector2(100,360)
 
 func _ready() -> void:
-	print("Player Ready")
+	pass
 
 func _physics_process(delta: float) -> void:
 	velocity.y = 0
